@@ -20,7 +20,8 @@ private val DarkColorScheme = darkColorScheme(
     secondary = PurpleGrey80,
     tertiary = Pink80,
     background = Black,
-    onBackground = Orange
+    onBackground = Orange,
+
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -67,9 +68,11 @@ fun TorreiferTheme(
         }
     }
 
+    val typography = typography(colorScheme.onBackground)
+
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = typography,
         content = content
     )
 }
