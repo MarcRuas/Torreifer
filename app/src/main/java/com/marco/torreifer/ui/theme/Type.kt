@@ -19,8 +19,9 @@ fun typography(onBackground: Color): Typography{
             fontSize = 16.sp,
             lineHeight = 24.sp,
             letterSpacing = 0.5.sp,
-            color = onBackground
+
         ),
+
         headlineLarge = TextStyle(
             fontFamily = torreiferFont,
             fontSize = fontXXLarge,

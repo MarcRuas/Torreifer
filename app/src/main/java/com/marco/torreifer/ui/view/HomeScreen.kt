@@ -15,7 +15,7 @@ fun HomeScreen() {
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
     ) {
-        MainContest()
+        SignUpScreen()
     }
 }
 
