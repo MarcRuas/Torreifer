@@ -1,5 +1,6 @@
 package com.marco.torreifer.ui.view
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,6 +21,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -27,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import com.marco.torreifer.R
 import com.marco.torreifer.ui.components.BtnOutlined
+import com.marco.torreifer.ui.components.BtnText
 import com.marco.torreifer.ui.components.CardInfo
 import com.marco.torreifer.ui.components.TxtField
 
@@ -39,6 +42,9 @@ fun SignUpScreen() {
     var cod by rememberSaveable {
         mutableStateOf("")
     }
+
+    val currentConfiguration = LocalConfiguration.current
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -50,6 +56,8 @@ fun SignUpScreen() {
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+
+
 
             Text(
                 text = "Obrigado por nos escolher!",
@@ -73,27 +81,33 @@ fun SignUpScreen() {
 
             TxtField(value = cod, onValueChange = { cod = it }, label = "Código")
 
-            Spacer(modifier = Modifier.height(100.dp))
+            Spacer(modifier = Modifier.height(80.dp))
 
             CardInfo(nomeEsc = nome, codEsc = cod)
 
-            Spacer(modifier = Modifier.height(15.dp))
+            Spacer(modifier = Modifier.height(10.dp))
             
             BtnOutlined(text = "Concluir") {
                 
             }
+
+            BtnText(text = "Voltar") {
+
+            }
         }
 
-        // Imagem de fundo
-        Image(
-            painter = painterResource(id = R.drawable.back_1),
-            contentDescription = "image description",
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .fillMaxWidth()
-                .align(Alignment.BottomCenter)
-                .zIndex(-1f)
-        )
+        if (currentConfiguration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            Image(
+                painter = painterResource(id = R.drawable.back_1),
+                contentDescription = "image description",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .align(Alignment.BottomCenter)
+                    .zIndex(-1f)
+            )
+        }
+
     }
 }
 

@@ -55,7 +55,7 @@ fun MainContest() {
             contentDescription = "",
             modifier = Modifier
                 .fillMaxWidth()
-                .height(348.dp)
+                .height(300.dp)
                 .padding(top = 100.dp)
         )
 

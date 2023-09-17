@@ -25,7 +25,7 @@ fun CardInfo(nomeEsc: String, codEsc: String) {
 
     ElevatedCard(
         modifier = Modifier
-            .size(width = 137.dp, height = 150.dp)
+            .size(width = 120.dp, height = 130.dp)
             .fillMaxSize(),
         elevation = CardDefaults.elevatedCardElevation(
             defaultElevation = 8.dp
