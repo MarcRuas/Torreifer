@@ -1,5 +1,6 @@
 package com.marco.torreifer.ui.view
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -18,6 +19,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -31,6 +33,8 @@ import com.marco.torreifer.ui.components.TxtField
 fun SignIn() {
 
     val imgSignIn = painterResource(id = R.drawable.group)
+
+    val currentConfiguration = LocalConfiguration.current
 
     var newvalue by rememberSaveable {
         mutableStateOf("")
@@ -61,14 +65,19 @@ fun SignIn() {
             textAlign = TextAlign.Center
         )
 
-        Image(
-            painter = imgSignIn,
-            contentDescription = "",
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(300.dp)
-        )
+        if(currentConfiguration.orientation == Configuration.ORIENTATION_PORTRAIT){
+            Image(
+                painter = imgSignIn,
+                contentDescription = "",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(275.dp)
+            )
+        }
+
+        Spacer(modifier = Modifier.height(15.dp))
+
         TxtField(value = newvalue, onValueChange = {newvalue = it}, label = "Número de fábrica")
         
         Spacer(modifier = Modifier.height(30.dp))
